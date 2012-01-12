@@ -239,7 +239,8 @@ class Core extends Base {
 		$response = json_encode(
 			array(
 				'success'		=> $success?TRUE:FALSE,
-				'topic_status'	=> $topic_status
+				'topic_status'	=> $topic_status,
+				'topic_icon'	=> SS_URL.'icons/'.$topic_status.'.png'
 			)
 		);
 		// JSON header

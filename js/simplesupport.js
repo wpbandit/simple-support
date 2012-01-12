@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
 				success: function(result) {
 					if(true==result.success) {
 						$('.ss-status-form').addClass('ss-status-updated');
+						$('.ss-status-icon-thread').attr('src',result.topic_icon);
 						$('.ss-status-select-field').val(result.topic_status);
 					}
 				}
