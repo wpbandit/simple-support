@@ -12,7 +12,6 @@ jQuery(document).ready(function($) {
 				data: $(this).serialize() + '&action=update_topic_status',
 				dataType: 'json',
 				success: function(result) {
-					alert(result.success);
 					if(true==result.success) {
 						$('.ss_status_form').addClass('ss_status_updated');
 						$('.ss_status_select_field').val(result.topic_status);
