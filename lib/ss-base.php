@@ -157,7 +157,7 @@ class Core extends Base {
 			$status = get_post_meta($topic_id,'topic_support_status',TRUE);
 			if(!$status) { $status = 'not_resolved'; }
 			// Display icon
-			$icon = '<img src="'.SS_URL.'icons/'.$status.'.png">';
+			$icon = '<img class="ss-img-status" src="'.SS_URL.'icons/'.$status.'.png">';
 			echo $icon;
 		}
 	}
