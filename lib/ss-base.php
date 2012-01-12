@@ -198,6 +198,9 @@ class Core extends Base {
 		Show support status form ?
 	**/
 	private static function show_support_status_form() {
+		// Topic page
+		if('topic'!=get_post_type())
+			return FALSE;
 		// Get forum ID
 		$forum_id = bbp_get_forum_id();
 		// Increase pagination template reply count
