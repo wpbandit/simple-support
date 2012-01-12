@@ -1,10 +1,10 @@
 jQuery(document).ready(function($) {
 
 	//! Update topic status
-	if($('.ss_status_form').length) {
-		$('.ss_status_form').submit(function(event) {
+	if($('.ss-status-form').length) {
+		$('.ss-status-form').submit(function(event) {
 			// Remove update class
-			$('.ss_status_form').removeClass('ss_status_updated');
+			$('.ss-status-form').removeClass('ss-status-updated');
 			// AJAX request
 			$.ajax({
 				type: 'POST',
@@ -13,8 +13,8 @@ jQuery(document).ready(function($) {
 				dataType: 'json',
 				success: function(result) {
 					if(true==result.success) {
-						$('.ss_status_form').addClass('ss_status_updated');
-						$('.ss_status_select_field').val(result.topic_status);
+						$('.ss-status-form').addClass('ss-status-updated');
+						$('.ss-status-select-field').val(result.topic_status);
 					}
 				}
 			});

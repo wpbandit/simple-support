@@ -174,19 +174,19 @@ class Core extends Base {
 			$status = get_post_meta($topic_id,'topic_support_status',TRUE);
 			if(!$status) { $status = 'not_resolved'; }
 			// Build form
-			$output  = '<div class="ss_status">';
-			$output .= '<form class="ss_status_form" method="post">';
+			$output  = '<div class="ss-status">';
+			$output .= '<form class="ss-status-form" method="post">';
 			// Select field
-			$output .= '<select name="ss_topic_status" class="ss_status_select_field">';
+			$output .= '<select name="ss-topic-status" class="ss-status-select-field">';
 			$output .= '<option value="not_resolved"'.selected($status,'not_resolved',FALSE).'>Not Resolved</option>';
 			$output .= '<option value="in_progress"'.selected($status,'in_progress',FALSE).'>In Progress</option>';
 			$output .= '<option value="resolved"'.selected($status,'resolved',FALSE).'>Resolved</option>';
 			$output .= '<option value="not_support"'.selected($status,'not_support',FALSE).'>Not A Support Question</option>';
 			$output .= '</select>';
 			// Topic ID
-			$output .= '<input name="ss_topic_id" type="hidden" value="'.$topic_id.'">';
+			$output .= '<input name="ss-topic-id" type="hidden" value="'.$topic_id.'">';
 			// Update button
-			$output .= '<input class="ss_update_status_button" type="submit" name="submit" value="Update Status">';
+			$output .= '<input class="ss-update-status_button" type="submit" name="submit" value="Update Status">';
 			$output .= '</form>';
 			$output .= '</div>';
 			// Print form
