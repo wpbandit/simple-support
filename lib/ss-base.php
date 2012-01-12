@@ -179,10 +179,10 @@ class Core extends Base {
 			$output .= '<form class="ss-status-form" method="post">';
 			// Select field
 			$output .= '<select name="ss_topic_status" class="ss-status-select-field">';
-			$output .= '<option value="not_resolved"'.selected($status,'not_resolved',FALSE).'>Not Resolved</option>';
-			$output .= '<option value="in_progress"'.selected($status,'in_progress',FALSE).'>In Progress</option>';
+			$output .= '<option value="not_resolved"'.selected($status,'not_resolved',FALSE).'>Not resolved</option>';
+			$output .= '<option value="in_progress"'.selected($status,'in_progress',FALSE).'>In progress</option>';
 			$output .= '<option value="resolved"'.selected($status,'resolved',FALSE).'>Resolved</option>';
-			$output .= '<option value="not_support"'.selected($status,'not_support',FALSE).'>Not A Support Question</option>';
+			$output .= '<option value="not_support"'.selected($status,'not_support',FALSE).'>Not a support question</option>';
 			$output .= '</select>';
 			// Topic ID
 			$output .= '<input name="ss_topic_id" type="hidden" value="'.$topic_id.'">';
