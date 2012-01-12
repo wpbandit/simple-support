@@ -175,6 +175,7 @@ class Core extends Base {
 			if(!$status) { $status = 'not_resolved'; }
 			// Build form
 			$output  = '<div class="ss-status">';
+			$output .= '<img class="ss-status-icon" src="'.SS_URL.'icons/'.$status.'.png">';
 			$output .= '<form class="ss-status-form" method="post">';
 			// Select field
 			$output .= '<select name="ss_topic_status" class="ss-status-select-field">';
