@@ -157,7 +157,7 @@ class Core extends Base {
 			$status = get_post_meta($topic_id,'topic_support_status',TRUE);
 			if(!$status) { $status = 'not_resolved'; }
 			// Display icon
-			$icon = '<img class="ss-img-status" src="'.SS_URL.'icons/'.$status.'.png">';
+			$icon = '<img class="ss-status-icon-forum" src="'.SS_URL.'icons/'.$status.'.png">';
 			echo $icon;
 		}
 	}
@@ -175,7 +175,7 @@ class Core extends Base {
 			if(!$status) { $status = 'not_resolved'; }
 			// Build form
 			$output  = '<div class="ss-status">';
-			$output .= '<img class="ss-status-icon" src="'.SS_URL.'icons/'.$status.'.png">';
+			$output .= '<img class="ss-status-icon-thread" src="'.SS_URL.'icons/'.$status.'.png">';
 			$output .= '<form class="ss-status-form" method="post">';
 			// Select field
 			$output .= '<select name="ss_topic_status" class="ss-status-select-field">';
