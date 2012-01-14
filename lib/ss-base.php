@@ -167,6 +167,11 @@ class Core extends Base {
 		Before single topic loop - Displays support status
 	**/
 	static function action_before_replies_loop() {
+		// Get forum ID
+		$forum_id = bbp_get_forum_id();
+		// Is support forum enabled ?
+		if(!self::get_option('forum_'.$forum_id))
+			return FALSE;
 		// Set statuses
 		$statuses = array(
 			'not_resolved'	=> 'Not resolved',
@@ -180,7 +185,7 @@ class Core extends Base {
 		$status = get_post_meta($topic_id,'topic_support_status',TRUE);
 		if(!$status) { $status = 'not_resolved'; }
 		// Build status HTML
-		$output  = '<div class="ss-status">';
+		$output  = '<div class="ss-status ss-status-top">';
 		$output .= '<img class="ss-status-icon-thread" src="'.SS_URL.'icons/'.$status.'.png">';
 		$output .= $statuses[$status];
 		$output .= '</div>';
