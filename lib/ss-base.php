@@ -134,6 +134,7 @@ class Core extends Base {
 		add_action('wp_enqueue_scripts',__CLASS__.'::enqueue_scripts');
 		// bbPress template actions
 		add_action('bbp_theme_before_topic_title',__CLASS__.'::action_before_topic_title');
+		add_action('bbp_template_before_replies_loop',__CLASS__.'::action_before_replies_loop');
 		add_action('bbp_template_after_pagination_loop',__CLASS__.'::action_after_pagination_loop');
 	}
 
@@ -163,9 +164,37 @@ class Core extends Base {
 	}
 
 	/**
+		Before single topic loop - Displays support status
+	**/
+	static function action_before_replies_loop() {
+		// Set statuses
+		$statuses = array(
+			'not_resolved'	=> 'Not resolved',
+			'in_progress'	=> 'In progress',
+			'resolved'		=> 'Resolved',
+			'not_support'	=> 'Not a support question'
+		);
+		// Get topic ID
+		$topic_id = bbp_get_topic_id();
+		// Get topic status
+		$status = get_post_meta($topic_id,'topic_support_status',TRUE);
+		if(!$status) { $status = 'not_resolved'; }
+		// Build status HTML
+		$output  = '<div class="ss-status">';
+		$output .= '<img class="ss-status-icon-thread" src="'.SS_URL.'icons/'.$status.'.png">';
+		$output .= $statuses[$status];
+		$output .= '</div>';
+		// Print HTML
+		echo $output;
+	}
+
+	/**
 		After single topic action - Displays support status form
 	**/
 	static function action_after_pagination_loop() {
+		// Increase pagination template reply count
+		self::$pagination_reply_template_count++;
+		
 		// Show support status form ?
 		if(self::show_support_status_form()) {
 			// Get topic ID
@@ -204,8 +233,6 @@ class Core extends Base {
 			return FALSE;
 		// Get forum ID
 		$forum_id = bbp_get_forum_id();
-		// Increase pagination template reply count
-		self::$pagination_reply_template_count++;
 		// Is support forum enabled ?
 		if(!self::get_option('forum_'.$forum_id))
 			return FALSE;
