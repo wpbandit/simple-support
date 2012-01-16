@@ -16,6 +16,7 @@ jQuery(document).ready(function($) {
 						$('.ss-status-form').addClass('ss-status-updated');
 						$('.ss-status-icon-thread').attr('src',result.topic_icon);
 						$('.ss-status-select-field').val(result.topic_status);
+						$('.ss-status-text').html(result.topic_text);
 					}
 				}
 			});

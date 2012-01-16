@@ -28,8 +28,8 @@ class Base {
 	protected static
 		//! Global variables
 		$vars,
-		//! Configuration
-		$config,
+		//! Statuses
+		$statuses,
 		//! Options
 		$option,
 		//! Notices
@@ -113,6 +113,13 @@ class Core extends Base {
 			// Version
 			'VERSION' => self::TEXT_Framework.' '.self::TEXT_Version,
 		);
+		// Set statuses
+		self::$statuses = array(
+			'not_resolved'	=> 'Not resolved',
+			'in_progress'	=> 'In progress',
+			'resolved'		=> 'Resolved',
+			'not_support'	=> 'Not a support question'
+		);
 		// Options
 		self::$option = get_option('simplesupport');
 		// If no options, set defaults
@@ -172,13 +179,6 @@ class Core extends Base {
 		// Is support forum enabled ?
 		if(!self::get_option('forum_'.$forum_id))
 			return FALSE;
-		// Set statuses
-		$statuses = array(
-			'not_resolved'	=> 'Not resolved',
-			'in_progress'	=> 'In progress',
-			'resolved'		=> 'Resolved',
-			'not_support'	=> 'Not a support question'
-		);
 		// Get topic ID
 		$topic_id = bbp_get_topic_id();
 		// Get topic status
@@ -187,7 +187,7 @@ class Core extends Base {
 		// Build status HTML
 		$output  = '<div class="ss-status ss-status-top">';
 		$output .= '<img class="ss-status-icon-thread" src="'.SS_URL.'icons/'.$status.'.png">';
-		$output .= $statuses[$status];
+		$output .= '<span class="ss-status-text">'.self::$statuses[$status].'</span>';
 		$output .= '</div>';
 		// Print HTML
 		echo $output;
@@ -272,6 +272,7 @@ class Core extends Base {
 			array(
 				'success'		=> $success?TRUE:FALSE,
 				'topic_status'	=> $topic_status,
+				'topic_text'	=> self::$statuses[$topic_status],
 				'topic_icon'	=> SS_URL.'icons/'.$topic_status.'.png'
 			)
 		);
