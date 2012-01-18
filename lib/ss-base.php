@@ -170,6 +170,10 @@ class Core extends Base {
 			// Display icon
 			$icon = '<img class="ss-status-icon-forum" src="'.SS_URL.'icons/'.$status.'.png">';
 			echo $icon;
+		} else {
+			// Display icon
+			$icon = '<img class="ss-status-icon-forum" src="'.SS_URL.'icons/not_support.png">';
+			echo $icon;
 		}
 	}
 
