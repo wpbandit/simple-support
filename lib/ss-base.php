@@ -156,7 +156,10 @@ class Core extends Base {
 		Before topic title action - Displays support status icon
 	**/
 	static function action_before_topic_title() {
+		// Get forum id
 		$forum_id = bbp_get_forum_id();
+		if(!$forum_id)
+			$forum_id = bbp_get_topic_forum_id();
 		// Support Forum Enabled ?
 		if(self::get_option('forum_'.$forum_id)) {
 			// Get topic ID
