@@ -150,6 +150,14 @@ class Core extends Base {
 	**/
 	static function enqueue_scripts() {
 		wp_enqueue_script('simplesupport',SS_URL.'js/simplesupport.js',array(jquery),'0.1');
+
+		// AJAX url + nonce variables
+		wp_localize_script('simplesupport','bandit',
+			array(
+				'ajaxurl'	=> admin_url('admin-ajax.php'),
+				'ajaxnonce' => wp_create_nonce('wpbandit-ajax-nonce')
+			)
+		);
 	}
 
 	/**
