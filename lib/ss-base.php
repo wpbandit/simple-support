@@ -149,7 +149,7 @@ class Core extends Base {
 		Enqueue scripts
 	**/
 	static function enqueue_scripts() {
-		wp_enqueue_script('simplesupport',SS_URL.'js/simplesupport.js',array(jquery),'0.1');
+		wp_enqueue_script('simplesupport',SS_URL.'js/simplesupport.js',array('jquery'),'0.1');
 
 		// AJAX url + nonce variables
 		wp_localize_script('simplesupport','bandit',
